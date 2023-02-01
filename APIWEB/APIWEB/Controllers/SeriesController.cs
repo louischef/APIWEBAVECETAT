@@ -22,6 +22,12 @@ namespace APIWEB.Controllers
 
         // GET: api/Series
         [HttpGet]
+        [ProducesResponseType(200)]
+        /// <summary>
+        /// Get all series.
+        /// </summary>
+        /// <returns>Http response</returns>
+        /// <response code="200">When the series is funded</response>
         public async Task<ActionResult<IEnumerable<Serie>>> GetSeries()
         {
             return await _context.Series.ToListAsync();
@@ -29,6 +35,15 @@ namespace APIWEB.Controllers
 
         // GET: api/Series/5
         [HttpGet("{id}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        /// <summary>
+        /// Get a serie by his id.
+        /// </summary>
+        /// <returns>Http response</returns>
+        /// <param name="id">The id of the serie</param>
+        /// <response code="200">When the series is funded</response>
+        /// <response code="404">When the series is not funded</response>
         public async Task<ActionResult<Serie>> GetSerie(int id)
         {
             var serie = await _context.Series.FindAsync(id);
@@ -44,6 +59,15 @@ namespace APIWEB.Controllers
         // PUT: api/Series/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
+        /// <summary>
+        /// Get a serie by his id.
+        /// </summary>
+        /// <returns>Http response</returns>
+        /// <param name="id">The id of the serie</param>
+        /// <response code="201">When the series is modified</response>
+        /// <response code="400">Modification refused</response>
         public async Task<IActionResult> PutSerie(int id, Serie serie)
         {
             if (id != serie.Serieid)
@@ -75,6 +99,15 @@ namespace APIWEB.Controllers
         // POST: api/Series
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
+        /// <summary>
+        /// Get a serie by his id.
+        /// </summary>
+        /// <returns>Http response</returns>
+        /// <param name="id">The id of the serie</param>
+        /// <response code="201">When the series is created</response>
+        /// <response code="404">When creation is refused</response>
         public async Task<ActionResult<Serie>> PostSerie(Serie serie)
         {
             _context.Series.Add(serie);
@@ -85,6 +118,15 @@ namespace APIWEB.Controllers
 
         // DELETE: api/Series/5
         [HttpDelete("{id}")]
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
+        /// <summary>
+        /// Get a serie by his id.
+        /// </summary>
+        /// <returns>Http response</returns>
+        /// <param name="id">The id of the serie</param>
+        /// <response code="201">When the series is deleted</response>
+        /// <response code="404">When the series is not funded</response>
         public async Task<IActionResult> DeleteSerie(int id)
         {
             var serie = await _context.Series.FindAsync(id);
