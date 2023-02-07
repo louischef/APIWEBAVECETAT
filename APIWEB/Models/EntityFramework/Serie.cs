@@ -9,21 +9,6 @@ namespace APIWEB.Models.EntityFramework;
 [Table("serie")]
 public partial class Serie
 {
-    public Serie()
-    {
-    }
-
-    public Serie(int serieid, string titre, string? resume, int? nbsaisons, int? nbepisodes, int? anneecreation, string? network)
-    {
-        Serieid = serieid;
-        Titre = titre;
-        Resume = resume;
-        Nbsaisons = nbsaisons;
-        Nbepisodes = nbepisodes;
-        Anneecreation = anneecreation;
-        Network = network;
-    }
-
     [Key]
     [Column("serieid")]
     public int Serieid { get; set; }
